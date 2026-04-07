@@ -75,10 +75,8 @@ class SMPTEBarsPattern(TestPattern):
         amplitude = 10 ** (-20 / 20.0)  # -20 dBFS
         return (amplitude * np.sin(2.0 * np.pi * self.tone_freq * t)).astype(np.float32)
 
-    def generate_frame(self, t: float, frame_num: int) -> Image.Image:
-        if self._cached_frame is not None:
-            return self._cached_frame.copy()
-
+    def _build_background(self):
+        """Build and cache the static color bar background."""
         W, H = self.width, self.height
         img = Image.new("RGB", (W, H), (0, 0, 0))
         draw = ImageDraw.Draw(img)
@@ -151,7 +149,35 @@ class SMPTEBarsPattern(TestPattern):
         draw.text(((W - lw) // 2, 5), label, fill=(255, 255, 255), font=font)
 
         self._cached_frame = img
-        return img.copy()
+
+    def generate_frame(self, t: float, frame_num: int) -> Image.Image:
+        if self._cached_frame is None:
+            self._build_background()
+
+        W, H = self.width, self.height
+        img = self._cached_frame.copy()
+        draw = ImageDraw.Draw(img)
+
+        try:
+            font_size = max(14, int(H * 0.02))
+            font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", font_size)
+        except (OSError, IOError):
+            font = ImageFont.load_default()
+
+        # Timestamp and frame counter overlay
+        margin = int(W * 0.02)
+        overlay_y = H - font_size - 10
+
+        time_text = f"Time: {t:.2f}s"
+        frame_text = f"Frame: {frame_num}  |  {W}x{H} @ {self.fps}fps"
+
+        draw.text((margin, overlay_y), frame_text, fill=(200, 200, 200), font=font)
+
+        bbox = draw.textbbox((0, 0), time_text, font=font)
+        tw = bbox[2] - bbox[0]
+        draw.text((W - margin - tw, overlay_y), time_text, fill=(200, 200, 200), font=font)
+
+        return img
 
 
 register_pattern("smpte_bars", SMPTEBarsPattern)

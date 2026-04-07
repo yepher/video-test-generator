@@ -8,7 +8,8 @@ import os
 from PIL import Image
 import numpy as np
 
-from audio import audio_to_wav_bytes
+from audio import audio_to_wav_bytes, generate_ltc
+from qr_overlay import composite_qr
 
 
 # Codec presets: maps codec name -> FFmpeg args
@@ -30,12 +31,26 @@ def find_ffmpeg() -> str:
     return "ffmpeg"
 
 
+def _format_timecode(frame_num: int, fps: int) -> str:
+    """Convert a frame number to SMPTE timecode HH:MM:SS:FF."""
+    total_seconds = frame_num // fps
+    ff = frame_num % fps
+    ss = total_seconds % 60
+    mm = (total_seconds // 60) % 60
+    hh = total_seconds // 3600
+    return f"{hh:02d}:{mm:02d}:{ss:02d}:{ff:02d}"
+
+
 def render_video(
     pattern,
     output_path: str,
     codec: str = "h264",
     sample_rate: int = 48000,
     verbose: bool = False,
+    enable_qr: bool = True,
+    enable_timecode: bool = True,
+    enable_ltc: bool = True,
+    qr_position: str = "bottom-right",
 ):
     """Render a test pattern to a video file.
 
@@ -45,6 +60,10 @@ def render_video(
         codec: codec preset name (h264, h265, prores, utvideo).
         sample_rate: audio sample rate.
         verbose: print progress info.
+        enable_qr: composite QR codes with timing data onto each frame.
+        enable_timecode: write SMPTE timecode metadata into the container.
+        enable_ltc: generate LTC (Linear Timecode) on right audio channel.
+        qr_position: QR code corner placement.
     """
     ffmpeg = find_ffmpeg()
     width = pattern.width
@@ -56,11 +75,26 @@ def render_video(
     if codec not in CODEC_PRESETS:
         raise ValueError(f"Unknown codec '{codec}'. Available: {list(CODEC_PRESETS.keys())}")
 
+    # Get pattern name for QR payload
+    pattern_name = ""
+    try:
+        pattern_name = pattern.metadata().name
+    except Exception:
+        pass
+
     # Generate audio and write to temp WAV
     if verbose:
         print("Generating audio track...")
     audio_data = pattern.generate_audio(duration, sample_rate)
-    wav_bytes = audio_to_wav_bytes(audio_data, sample_rate)
+
+    # Generate LTC timecode audio for right channel
+    ltc_audio = None
+    if enable_ltc:
+        if verbose:
+            print("Generating LTC timecode audio (right channel)...")
+        ltc_audio = generate_ltc(duration, fps, sample_rate)
+
+    wav_bytes = audio_to_wav_bytes(audio_data, sample_rate, ltc_audio=ltc_audio)
 
     with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp_wav:
         tmp_wav.write(wav_bytes)
@@ -69,6 +103,27 @@ def render_video(
     try:
         # Build FFmpeg command
         codec_args = CODEC_PRESETS[codec]
+
+        # SMPTE timecode: embed as a timecode metadata stream
+        timecode_input_args = []
+        timecode_output_args = []
+        if enable_timecode:
+            # Create a timecode data stream input and map it
+            timecode_input_args = [
+                "-f", "lavfi",
+                "-i", f"testsrc=size=2x2:rate={fps},format=rgb24",
+            ]
+            timecode_output_args = [
+                "-map", "0:v",       # video from raw frames
+                "-map", "1:a",       # audio from WAV
+                "-metadata:s:v:0", "timecode=00:00:00:00",
+            ]
+        else:
+            timecode_output_args = [
+                "-map", "0:v",
+                "-map", "1:a",
+            ]
+
         cmd = [
             ffmpeg,
             "-y",                          # overwrite output
@@ -79,6 +134,7 @@ def render_video(
             "-r", str(fps),
             "-i", "-",                     # video from stdin
             "-i", wav_path,                # audio from file
+            *timecode_output_args,
             *codec_args,
             "-c:a", "aac", "-b:a", "192k",  # audio codec
             "-shortest",
@@ -86,6 +142,15 @@ def render_video(
         ]
 
         if verbose:
+            features = []
+            if enable_timecode:
+                features.append("SMPTE timecode")
+            if enable_qr:
+                features.append(f"QR codes ({qr_position})")
+            if enable_ltc:
+                features.append("LTC audio (right channel)")
+            feat_str = ", ".join(features) if features else "none"
+            print(f"Embedded data: {feat_str}")
             print(f"Running: {' '.join(cmd)}")
             print(f"Rendering {total_frames} frames at {width}x{height} @ {fps}fps...")
 
@@ -107,11 +172,23 @@ def render_video(
             if img.mode != "RGB":
                 img = img.convert("RGB")
 
+            # Composite QR code with timing data
+            if enable_qr:
+                img = composite_qr(
+                    frame=img,
+                    frame_num=frame_num,
+                    t=t,
+                    fps=fps,
+                    pattern_name=pattern_name,
+                    position=qr_position,
+                )
+
             proc.stdin.write(img.tobytes())
 
             if verbose and frame_num % fps == 0:
                 elapsed = frame_num / fps
-                print(f"  {elapsed:.0f}s / {duration:.0f}s ({frame_num}/{total_frames} frames)")
+                tc = _format_timecode(frame_num, fps)
+                print(f"  {elapsed:.0f}s / {duration:.0f}s ({frame_num}/{total_frames} frames)  TC: {tc}")
 
         proc.stdin.close()
         proc.wait()

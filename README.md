@@ -115,12 +115,52 @@ python generate.py --pattern countdown --duration 11 --output countdown.mp4
 python generate.py -p countdown -d 11 --fps 60 -o countdown_60.mp4
 ```
 
+## Embedded Timing Data
+
+Every generated video includes three layers of machine-readable timing data, all enabled by default:
+
+### SMPTE Timecode (container metadata)
+
+Standard `HH:MM:SS:FF` timecode written into the MP4/MOV container. Readable by professional NLEs (Premiere, DaVinci Resolve, Avid), FFprobe, and most broadcast tools.
+
+### QR Codes (visual, per-frame)
+
+A small QR code in the bottom-right corner of each frame encodes a JSON payload:
+
+```json
+{"f":45,"t":1.5,"fps":30,"res":"1920x1080","pat":"Bouncing Ball A/V Sync"}
+```
+
+This is the most resilient timing method — it survives transcoding, re-encoding, screen capture, and even filming the display with a camera. Any single frame can be decoded independently.
+
+### LTC Audio (Linear Timecode, right channel)
+
+SMPTE timecode encoded as a biphase-modulated audio signal on the right audio channel (left channel carries the pattern audio). This is the broadcast standard for synchronizing devices that don't share a data bus — decodable by hardware LTC readers and software like `ltcdump`.
+
+### Disabling features
+
+```bash
+# Disable QR codes (e.g. for clean calibration frames)
+python generate.py -p smpte_bars --no-qr -o clean_bars.mp4
+
+# Disable LTC (mono audio output)
+python generate.py -p bouncing_ball --no-ltc -o mono_sync.mp4
+
+# Disable all embedded data
+python generate.py -p bouncing_ball --no-qr --no-timecode --no-ltc -o plain.mp4
+
+# Move QR code to a different corner
+python generate.py -p bouncing_ball --qr-position top-left -o sync.mp4
+```
+
 ## Full CLI Reference
 
 ```
 usage: generate.py [-h] [--list] [--pattern PATTERN] [--duration DURATION]
                    [--fps FPS] [--resolution WxH] [--codec {h264,h265,prores,utvideo}]
                    [--output OUTPUT] [--sample-rate SAMPLE_RATE] [--verbose]
+                   [--no-qr] [--no-timecode] [--no-ltc]
+                   [--qr-position {bottom-right,bottom-left,top-right,top-left}]
 
 Options:
   --list, -l              List available test patterns
@@ -132,6 +172,11 @@ Options:
   --output, -o FILE       Output file path (default: output.mp4)
   --sample-rate HZ        Audio sample rate (default: 48000)
   --verbose, -v           Print progress during rendering
+  --no-qr                 Disable QR code overlay on each frame
+  --no-timecode           Disable SMPTE timecode in container metadata
+  --no-ltc                Disable LTC audio timecode on right channel
+  --qr-position POS       QR code corner: bottom-right (default), bottom-left,
+                          top-right, top-left
 ```
 
 ## Supported Codecs
@@ -168,7 +213,8 @@ The new pattern will then appear in `--list` and be available via `--pattern my_
 vid-timing-generator/
   generate.py            CLI entry point
   renderer.py            FFmpeg encoding pipeline
-  audio.py               Tone burst and audio utilities
+  audio.py               Tone burst, LTC, and audio utilities
+  qr_overlay.py          QR code generation and compositing
   patterns/
     __init__.py           Base class and pattern registry
     bouncing_ball.py      A/V sync bouncing ball

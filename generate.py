@@ -53,6 +53,15 @@ Examples:
                         help="Audio sample rate (default: 48000)")
     parser.add_argument("--verbose", "-v", action="store_true",
                         help="Print progress info")
+    parser.add_argument("--no-qr", action="store_true",
+                        help="Disable QR code overlay on each frame")
+    parser.add_argument("--no-timecode", action="store_true",
+                        help="Disable SMPTE timecode track in container")
+    parser.add_argument("--no-ltc", action="store_true",
+                        help="Disable LTC (Linear Timecode) on right audio channel")
+    parser.add_argument("--qr-position", type=str, default="bottom-right",
+                        choices=["bottom-right", "bottom-left", "top-right", "top-left"],
+                        help="QR code corner placement (default: bottom-right)")
 
     args = parser.parse_args()
 
@@ -80,11 +89,18 @@ Examples:
         duration=args.duration,
     )
 
+    enable_qr = not args.no_qr
+    enable_timecode = not args.no_timecode
+    enable_ltc = not args.no_ltc
+
     meta = pattern.metadata()
     print(f"Generating: {meta.name}")
     print(f"  Resolution: {width}x{height} @ {args.fps}fps")
     print(f"  Duration:   {args.duration}s")
     print(f"  Codec:      {args.codec}")
+    print(f"  QR codes:   {'ON (' + args.qr_position + ')' if enable_qr else 'OFF'}")
+    print(f"  Timecode:   {'ON' if enable_timecode else 'OFF'}")
+    print(f"  LTC audio:  {'ON (right channel)' if enable_ltc else 'OFF'}")
     print(f"  Output:     {args.output}")
     print()
 
@@ -94,6 +110,10 @@ Examples:
         codec=args.codec,
         sample_rate=args.sample_rate,
         verbose=args.verbose,
+        enable_qr=enable_qr,
+        enable_timecode=enable_timecode,
+        enable_ltc=enable_ltc,
+        qr_position=args.qr_position,
     )
 
     print(f"Done! Created {args.output}")
