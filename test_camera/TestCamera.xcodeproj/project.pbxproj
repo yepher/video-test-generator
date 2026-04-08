@@ -1,0 +1,590 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A0000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0000001 /* Assets.xcassets */; };
+		A1000000 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000 /* main.swift */; };
+		A1000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000001 /* AppDelegate.swift */; };
+		A1000002 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000002 /* ViewController.swift */; };
+		A1000010 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000010 /* Config.swift */; };
+		A1000011 /* PatternRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000011 /* PatternRenderer.swift */; };
+		A1000012 /* PatternState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000012 /* PatternState.swift */; };
+		A1000013 /* QROverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000013 /* QROverlay.swift */; };
+		A1000014 /* ToneBurst.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000014 /* ToneBurst.swift */; };
+		A1000015 /* SMPTEBarsPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000015 /* SMPTEBarsPattern.swift */; };
+		A1000016 /* BouncingBallPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000016 /* BouncingBallPattern.swift */; };
+		A1000017 /* GridChartPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000017 /* GridChartPattern.swift */; };
+		A1000018 /* CountdownPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000018 /* CountdownPattern.swift */; };
+		A1000030 /* com.yepher.vidtiming.testcamera.extension.systemextension in Embed System Extensions */ = {isa = PBXBuildFile; fileRef = C1000099 /* com.yepher.vidtiming.testcamera.extension.systemextension */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A2000001 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2000001 /* main.swift */; };
+		A2000002 /* CameraProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2000002 /* CameraProvider.swift */; };
+		A2000003 /* CameraDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2000003 /* CameraDevice.swift */; };
+		A2000004 /* CameraStreamSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2000004 /* CameraStreamSource.swift */; };
+		A2000005 /* CameraStreamSink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2000005 /* CameraStreamSink.swift */; };
+		A2000010 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000010 /* Config.swift */; };
+		A2000011 /* PatternRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000011 /* PatternRenderer.swift */; };
+		A2000012 /* PatternState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000012 /* PatternState.swift */; };
+		A2000013 /* QROverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000013 /* QROverlay.swift */; };
+		A2000014 /* ToneBurst.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000014 /* ToneBurst.swift */; };
+		A2000015 /* SMPTEBarsPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000015 /* SMPTEBarsPattern.swift */; };
+		A2000016 /* BouncingBallPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000016 /* BouncingBallPattern.swift */; };
+		A2000017 /* GridChartPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000017 /* GridChartPattern.swift */; };
+		A2000018 /* CountdownPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000018 /* CountdownPattern.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D1000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2000001;
+			remoteInfo = TestCameraExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D2000001 /* Embed System Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(SYSTEM_EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+				A1000030 /* com.yepher.vidtiming.testcamera.extension.systemextension in Embed System Extensions */,
+			);
+			name = "Embed System Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B0000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B1000000 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		B1000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B1000002 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B1000003 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1000004 /* TestCamera.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestCamera.entitlements; sourceTree = "<group>"; };
+		B1000010 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		B1000011 /* PatternRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternRenderer.swift; sourceTree = "<group>"; };
+		B1000012 /* PatternState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternState.swift; sourceTree = "<group>"; };
+		B1000013 /* QROverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QROverlay.swift; sourceTree = "<group>"; };
+		B1000014 /* ToneBurst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToneBurst.swift; sourceTree = "<group>"; };
+		B1000015 /* SMPTEBarsPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPTEBarsPattern.swift; sourceTree = "<group>"; };
+		B1000016 /* BouncingBallPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncingBallPattern.swift; sourceTree = "<group>"; };
+		B1000017 /* GridChartPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridChartPattern.swift; sourceTree = "<group>"; };
+		B1000018 /* CountdownPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownPattern.swift; sourceTree = "<group>"; };
+		B2000001 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		B2000002 /* CameraProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraProvider.swift; sourceTree = "<group>"; };
+		B2000003 /* CameraDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDevice.swift; sourceTree = "<group>"; };
+		B2000004 /* CameraStreamSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraStreamSource.swift; sourceTree = "<group>"; };
+		B2000005 /* CameraStreamSink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraStreamSink.swift; sourceTree = "<group>"; };
+		B2000006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2000007 /* TestCameraExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestCameraExtension.entitlements; sourceTree = "<group>"; };
+		C1000001 /* TestCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1000099 /* com.yepher.vidtiming.testcamera.extension.systemextension */ = {isa = PBXFileReference; explicitFileType = "wrapper.system-extension"; includeInIndex = 0; path = com.yepher.vidtiming.testcamera.extension.systemextension; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F1000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		G1000001 = {
+			isa = PBXGroup;
+			children = (
+				G1000002 /* TestCamera */,
+				G1000003 /* TestCameraExtension */,
+				G1000004 /* Shared */,
+				G1000005 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		G1000002 /* TestCamera */ = {
+			isa = PBXGroup;
+			children = (
+				B1000000 /* main.swift */,
+				B1000001 /* AppDelegate.swift */,
+				B1000002 /* ViewController.swift */,
+				B0000001 /* Assets.xcassets */,
+				B1000003 /* Info.plist */,
+				B1000004 /* TestCamera.entitlements */,
+			);
+			path = TestCamera;
+			sourceTree = "<group>";
+		};
+		G1000003 /* TestCameraExtension */ = {
+			isa = PBXGroup;
+			children = (
+				B2000001 /* main.swift */,
+				B2000002 /* CameraProvider.swift */,
+				B2000003 /* CameraDevice.swift */,
+				B2000004 /* CameraStreamSource.swift */,
+				B2000005 /* CameraStreamSink.swift */,
+				B2000006 /* Info.plist */,
+				B2000007 /* TestCameraExtension.entitlements */,
+			);
+			path = TestCameraExtension;
+			sourceTree = "<group>";
+		};
+		G1000004 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				B1000010 /* Config.swift */,
+				B1000011 /* PatternRenderer.swift */,
+				B1000012 /* PatternState.swift */,
+				B1000013 /* QROverlay.swift */,
+				G1000006 /* Audio */,
+				G1000007 /* Patterns */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		G1000005 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C1000001 /* TestCamera.app */,
+				C1000099 /* com.yepher.vidtiming.testcamera.extension.systemextension */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		G1000006 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				B1000014 /* ToneBurst.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		G1000007 /* Patterns */ = {
+			isa = PBXGroup;
+			children = (
+				B1000015 /* SMPTEBarsPattern.swift */,
+				B1000016 /* BouncingBallPattern.swift */,
+				B1000017 /* GridChartPattern.swift */,
+				B1000018 /* CountdownPattern.swift */,
+			);
+			path = Patterns;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C1000002 /* TestCamera */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = X1000001 /* Build configuration list for PBXNativeTarget "TestCamera" */;
+			buildPhases = (
+				S1000001 /* Sources */,
+				F1000001 /* Frameworks */,
+				R1000001 /* Resources */,
+				D2000001 /* Embed System Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D1000002 /* PBXTargetDependency */,
+			);
+			name = TestCamera;
+			productName = TestCamera;
+			productReference = C1000001 /* TestCamera.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C2000001 /* TestCameraExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = X2000001 /* Build configuration list for PBXNativeTarget "TestCameraExtension" */;
+			buildPhases = (
+				S2000001 /* Sources */,
+				F2000001 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestCameraExtension;
+			productName = TestCameraExtension;
+			productReference = C1000099 /* com.yepher.vidtiming.testcamera.extension.systemextension */;
+			productType = "com.apple.product-type.system-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E1000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 2610;
+				TargetAttributes = {
+					C1000002 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					C2000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = X3000001 /* Build configuration list for PBXProject "TestCamera" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = G1000001;
+			productRefGroup = G1000005 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C1000002 /* TestCamera */,
+				C2000001 /* TestCameraExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		R1000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0000001 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		S1000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1000000 /* main.swift in Sources */,
+				A1000001 /* AppDelegate.swift in Sources */,
+				A1000002 /* ViewController.swift in Sources */,
+				A1000010 /* Config.swift in Sources */,
+				A1000011 /* PatternRenderer.swift in Sources */,
+				A1000012 /* PatternState.swift in Sources */,
+				A1000013 /* QROverlay.swift in Sources */,
+				A1000014 /* ToneBurst.swift in Sources */,
+				A1000015 /* SMPTEBarsPattern.swift in Sources */,
+				A1000016 /* BouncingBallPattern.swift in Sources */,
+				A1000017 /* GridChartPattern.swift in Sources */,
+				A1000018 /* CountdownPattern.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		S2000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2000001 /* main.swift in Sources */,
+				A2000002 /* CameraProvider.swift in Sources */,
+				A2000003 /* CameraDevice.swift in Sources */,
+				A2000004 /* CameraStreamSource.swift in Sources */,
+				A2000005 /* CameraStreamSink.swift in Sources */,
+				A2000010 /* Config.swift in Sources */,
+				A2000011 /* PatternRenderer.swift in Sources */,
+				A2000012 /* PatternState.swift in Sources */,
+				A2000013 /* QROverlay.swift in Sources */,
+				A2000014 /* ToneBurst.swift in Sources */,
+				A2000015 /* SMPTEBarsPattern.swift in Sources */,
+				A2000016 /* BouncingBallPattern.swift in Sources */,
+				A2000017 /* GridChartPattern.swift in Sources */,
+				A2000018 /* CountdownPattern.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D1000002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2000001 /* TestCameraExtension */;
+			targetProxy = D1000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		Y1000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = WDCGJTU726;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		Y1000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = WDCGJTU726;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		Y2000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TestCamera/TestCamera.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 10;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = WDCGJTU726;
+				ENABLE_APP_SANDBOX = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = TestCamera/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yepher.vidtiming.testcamera;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		Y2000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TestCamera/TestCamera.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 10;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = WDCGJTU726;
+				ENABLE_APP_SANDBOX = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = TestCamera/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yepher.vidtiming.testcamera;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		Y3000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TestCameraExtension/TestCameraExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = YES;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = YES;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TestCameraExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Test Camera Extension";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yepher.vidtiming.testcamera.extension;
+				PRODUCT_NAME = com.yepher.vidtiming.testcamera.extension;
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		Y3000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TestCameraExtension/TestCameraExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = YES;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = YES;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TestCameraExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Test Camera Extension";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yepher.vidtiming.testcamera.extension;
+				PRODUCT_NAME = com.yepher.vidtiming.testcamera.extension;
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		X1000001 /* Build configuration list for PBXNativeTarget "TestCamera" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				Y2000001 /* Debug */,
+				Y2000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		X2000001 /* Build configuration list for PBXNativeTarget "TestCameraExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				Y3000001 /* Debug */,
+				Y3000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		X3000001 /* Build configuration list for PBXProject "TestCamera" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				Y1000001 /* Debug */,
+				Y1000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E1000001 /* Project object */;
+}
