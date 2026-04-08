@@ -35,6 +35,10 @@
 		A2000016 /* BouncingBallPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000016 /* BouncingBallPattern.swift */; };
 		A2000017 /* GridChartPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000017 /* GridChartPattern.swift */; };
 		A2000018 /* CountdownPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000018 /* CountdownPattern.swift */; };
+		A3000001 /* TestCameraAudioDriver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3000001 /* TestCameraAudioDriver.cpp */; };
+		A3000002 /* AudioPatterns.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3000003 /* AudioPatterns.cpp */; };
+		A3000010 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3000010 /* CoreAudio.framework */; };
+		A3000011 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3000011 /* CoreFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +90,14 @@
 		B2000007 /* TestCameraExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestCameraExtension.entitlements; sourceTree = "<group>"; };
 		C1000001 /* TestCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1000099 /* com.yepher.vidtiming.testcamera.extension.systemextension */ = {isa = PBXFileReference; explicitFileType = "wrapper.system-extension"; includeInIndex = 0; path = com.yepher.vidtiming.testcamera.extension.systemextension; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3000001 /* TestCameraAudioDriver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestCameraAudioDriver.cpp; sourceTree = "<group>"; };
+		B3000002 /* TestCameraAudioDriver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestCameraAudioDriver.h; sourceTree = "<group>"; };
+		B3000003 /* AudioPatterns.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AudioPatterns.cpp; sourceTree = "<group>"; };
+		B3000004 /* AudioPatterns.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioPatterns.h; sourceTree = "<group>"; };
+		B3000005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3000010 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		B3000011 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		C3000001 /* TestCameraAudioDriver.driver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestCameraAudioDriver.driver; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +115,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F3000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3000010 /* CoreAudio.framework in Frameworks */,
+				A3000011 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -111,6 +132,7 @@
 			children = (
 				G1000002 /* TestCamera */,
 				G1000003 /* TestCameraExtension */,
+				G3000001 /* TestCameraAudioDriver */,
 				G1000004 /* Shared */,
 				G1000005 /* Products */,
 			);
@@ -161,6 +183,7 @@
 			children = (
 				C1000001 /* TestCamera.app */,
 				C1000099 /* com.yepher.vidtiming.testcamera.extension.systemextension */,
+				C3000001 /* TestCameraAudioDriver.driver */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -182,6 +205,27 @@
 				B1000018 /* CountdownPattern.swift */,
 			);
 			path = Patterns;
+			sourceTree = "<group>";
+		};
+		G3000001 /* TestCameraAudioDriver */ = {
+			isa = PBXGroup;
+			children = (
+				B3000001 /* TestCameraAudioDriver.cpp */,
+				B3000002 /* TestCameraAudioDriver.h */,
+				B3000003 /* AudioPatterns.cpp */,
+				B3000004 /* AudioPatterns.h */,
+				B3000005 /* Info.plist */,
+			);
+			path = TestCameraAudioDriver;
+			sourceTree = "<group>";
+		};
+		G3000002 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B3000010 /* CoreAudio.framework */,
+				B3000011 /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +266,22 @@
 			productReference = C1000099 /* com.yepher.vidtiming.testcamera.extension.systemextension */;
 			productType = "com.apple.product-type.system-extension";
 		};
+		C3000002 /* TestCameraAudioDriver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = X4000001 /* Build configuration list for PBXNativeTarget "TestCameraAudioDriver" */;
+			buildPhases = (
+				S3000001 /* Sources */,
+				F3000001 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestCameraAudioDriver;
+			productName = TestCameraAudioDriver;
+			productReference = C3000001 /* TestCameraAudioDriver.driver */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -236,6 +296,9 @@
 						CreatedOnToolsVersion = 15.0;
 					};
 					C2000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					C3000002 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
@@ -255,6 +318,7 @@
 			targets = (
 				C1000002 /* TestCamera */,
 				C2000001 /* TestCameraExtension */,
+				C3000002 /* TestCameraAudioDriver */,
 			);
 		};
 /* End PBXProject section */
@@ -308,6 +372,15 @@
 				A2000016 /* BouncingBallPattern.swift in Sources */,
 				A2000017 /* GridChartPattern.swift in Sources */,
 				A2000018 /* CountdownPattern.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		S3000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3000001 /* TestCameraAudioDriver.cpp in Sources */,
+				A3000002 /* AudioPatterns.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,6 +627,42 @@
 			};
 			name = Release;
 		};
+		Y4000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = WDCGJTU726;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = TestCameraAudioDriver/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yepher.vidtiming.testcamera.audiodriver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = driver;
+			};
+			name = Debug;
+		};
+		Y4000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = WDCGJTU726;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = TestCameraAudioDriver/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yepher.vidtiming.testcamera.audiodriver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = driver;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -580,6 +689,15 @@
 			buildConfigurations = (
 				Y1000001 /* Debug */,
 				Y1000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		X4000001 /* Build configuration list for PBXNativeTarget "TestCameraAudioDriver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				Y4000001 /* Debug */,
+				Y4000002 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -21,3 +21,6 @@ let kPatternStateKey = "currentPatternState"
 
 // Mmap path for HAL plugin communication
 let kAudioStatePath = "/tmp/com.testcamera.audio.state"
+
+// Audio device UID (must match kDevice_UID in TestCameraAudioDriver.h)
+let kAudioDeviceUID = "TestCameraAudioDevice_UID"

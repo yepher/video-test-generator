@@ -45,6 +45,9 @@ class CameraDevice: NSObject, CMIOExtensionDeviceSource {
     private var startTime: UInt64 = 0
     private var frameCounter: Int = 0
 
+    // Audio state file for HAL plugin communication
+    private var _audioStateSequence: UInt32 = 0
+
     init(localizedName: String) {
         super.init()
 
@@ -128,10 +131,40 @@ class CameraDevice: NSObject, CMIOExtensionDeviceSource {
                 frameCounter = 0
             }
             _currentEnableQR = enableQR
+            writeAudioState()
         } else {
             os_log(.error, "TestCameraExt: unknown pattern type '%{public}@'", patternRaw)
         }
         _patternLock.unlock()
+    }
+
+    /// Write audio state to /tmp/ for the HAL audio plugin to read.
+    /// The struct layout must match AudioDriverState in TestCameraAudioDriver.h.
+    private func writeAudioState() {
+        let patternID: UInt32
+        switch _currentPatternType {
+        case .bouncingBall: patternID = 0
+        case .smpteBars:    patternID = 1
+        case .gridChart:    patternID = 2
+        case .countdown:    patternID = 3
+        }
+
+        _audioStateSequence += 1
+
+        // Binary struct: patternID(4) + streamTime(8) + frameCounter(4) + sequence(4) + enableAudio(4)
+        var data = Data(count: 24)
+        data.withUnsafeMutableBytes { ptr in
+            let base = ptr.baseAddress!
+            base.storeBytes(of: patternID, toByteOffset: 0, as: UInt32.self)
+            base.storeBytes(of: Double(frameCounter) / Double(kFrameRate), toByteOffset: 4, as: Double.self)
+            base.storeBytes(of: UInt32(frameCounter), toByteOffset: 12, as: UInt32.self)
+            base.storeBytes(of: _audioStateSequence, toByteOffset: 16, as: UInt32.self)
+            base.storeBytes(of: UInt32(1), toByteOffset: 20, as: UInt32.self)
+        }
+
+        let url = URL(fileURLWithPath: kAudioStatePath)
+        try? data.write(to: url, options: .atomic)
+        chmod(kAudioStatePath, 0o644)
     }
 
     // MARK: - Properties
