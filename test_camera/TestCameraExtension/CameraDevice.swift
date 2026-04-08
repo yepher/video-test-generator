@@ -125,6 +125,7 @@ class CameraDevice: NSObject, CMIOExtensionDeviceSource {
                 os_log(.info, "TestCameraExt: CMIO property → SWITCHING to %{public}@", newPattern.rawValue)
                 _currentPatternType = newPattern
                 _currentRenderer = createPatternRenderer(for: newPattern)
+                frameCounter = 0
             }
             _currentEnableQR = enableQR
         } else {
