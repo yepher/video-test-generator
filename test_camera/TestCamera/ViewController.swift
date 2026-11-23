@@ -159,6 +159,22 @@ class ViewController: NSViewController {
         OSSystemExtensionManager.shared.submitRequest(activationRequest)
     }
 
+    private static let activatedBuildKey = "ActivatedExtensionBuild"
+
+    private static var currentBuild: String {
+        Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? ""
+    }
+
+    /// If the extension was activated by an older build of the app (i.e. the app
+    /// was just auto-updated), activate again so the new extension replaces it.
+    func reactivateExtensionIfAppWasUpdated() {
+        guard let previous = UserDefaults.standard.string(forKey: Self.activatedBuildKey),
+              previous != Self.currentBuild,
+              Bundle.main.bundlePath.hasPrefix("/Applications/") else { return }
+        os_log("App updated from build %{public}@ to %{public}@; updating camera extension", previous, Self.currentBuild)
+        activate()
+    }
+
     @objc func deactivate(_ sender: Any? = nil) {
         guard let extensionIdentifier = ViewController._extensionBundle().bundleIdentifier else {
             showStatus("Error: Could not find extension bundle identifier")
@@ -437,12 +453,14 @@ extension ViewController: OSSystemExtensionRequestDelegate {
     func request(_ request: OSSystemExtensionRequest, didFinishWithResult result: OSSystemExtensionRequest.Result) {
         if result == .completed {
             if activating {
+                UserDefaults.standard.set(Self.currentBuild, forKey: Self.activatedBuildKey)
                 showStatus("Camera activated! Select 'Test Camera' in any video app.")
                 // Connect to the newly activated camera
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
                     self?.connectToVirtualCamera()
                 }
             } else {
+                UserDefaults.standard.removeObject(forKey: Self.activatedBuildKey)
                 showStatus("Camera deactivated.")
                 sourceStream = nil
             }

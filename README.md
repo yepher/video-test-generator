@@ -229,3 +229,27 @@ vid-timing-generator/
   images/                 Sample frames for documentation
   requirements.txt        Python dependencies
 ```
+
+## TestCamera Releases & Auto-Update
+
+The macOS virtual camera app (`test_camera/`) is distributed through [GitHub Releases](https://github.com/yepher/video-test-generator/releases) and updates itself with [Sparkle](https://sparkle-project.org). The app checks `releases/latest/download/appcast.xml` once a day (or via **Test Camera → Check for Updates…**). After an update, it re-activates the camera extension so the new version replaces the old one.
+
+Each release contains:
+
+- `TestCamera-<version>.dmg`: the notarized app for new installs. Drag it to `/Applications`.
+- `TestCamera-<version>.zip` and `appcast.xml`: the update archive and the Sparkle feed that points to it.
+- `TestCameraAudioDriver-<version>.zip`: the notarized HAL audio driver. Install it with `sudo test_camera/TestCameraAudioDriver/install.sh <path-to-driver>`. Sparkle does not update the driver.
+
+### Cutting a release
+
+Releases are built by GitHub Actions (`.github/workflows/release.yml`), the same way as livekit-observer. Push a version tag:
+
+```bash
+git tag v1.0.0 && git push origin v1.0.0
+```
+
+The workflow archives the app with Developer ID, then notarizes and staples the app, DMG and driver. It signs the update with the Sparkle key, then creates the GitHub release. The build number is 100 plus the commit count. Tags with a hyphen (`v1.1.0-beta.1`) become prereleases, and the update feed never points to them.
+
+One-time setup: run `test_camera/scripts/setup-release-secrets.sh`. It stores the Sparkle key, the Developer ID certificate, the notarization credentials and two Developer ID provisioning profiles as repository secrets. The camera system extension needs those profiles. The script also tells you how to create them.
+
+Release builds are signed manually with those profiles, so install them before archiving locally. The setup script does this. Debug builds still use automatic signing.

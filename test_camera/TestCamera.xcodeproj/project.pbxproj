@@ -21,6 +21,7 @@
 		A1000017 /* GridChartPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000017 /* GridChartPattern.swift */; };
 		A1000018 /* CountdownPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000018 /* CountdownPattern.swift */; };
 		A1000030 /* com.yepher.vidtiming.testcamera.extension.systemextension in Embed System Extensions */ = {isa = PBXBuildFile; fileRef = C1000099 /* com.yepher.vidtiming.testcamera.extension.systemextension */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A1000040 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = P1000002 /* Sparkle */; };
 		A2000001 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2000001 /* main.swift */; };
 		A2000002 /* CameraProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2000002 /* CameraProvider.swift */; };
 		A2000003 /* CameraDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2000003 /* CameraDevice.swift */; };
@@ -88,8 +89,6 @@
 		B2000005 /* CameraStreamSink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraStreamSink.swift; sourceTree = "<group>"; };
 		B2000006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2000007 /* TestCameraExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestCameraExtension.entitlements; sourceTree = "<group>"; };
-		C1000001 /* TestCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1000099 /* com.yepher.vidtiming.testcamera.extension.systemextension */ = {isa = PBXFileReference; explicitFileType = "wrapper.system-extension"; includeInIndex = 0; path = com.yepher.vidtiming.testcamera.extension.systemextension; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3000001 /* TestCameraAudioDriver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestCameraAudioDriver.cpp; sourceTree = "<group>"; };
 		B3000002 /* TestCameraAudioDriver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestCameraAudioDriver.h; sourceTree = "<group>"; };
 		B3000003 /* AudioPatterns.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AudioPatterns.cpp; sourceTree = "<group>"; };
@@ -97,6 +96,8 @@
 		B3000005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3000010 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		B3000011 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		C1000001 /* TestCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1000099 /* com.yepher.vidtiming.testcamera.extension.systemextension */ = {isa = PBXFileReference; explicitFileType = "wrapper.system-extension"; includeInIndex = 0; path = com.yepher.vidtiming.testcamera.extension.systemextension; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3000001 /* TestCameraAudioDriver.driver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestCameraAudioDriver.driver; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -105,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1000040 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +129,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B870BF430B4A97200539013 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				B3000010 /* CoreAudio.framework */,
+				B3000011 /* CoreFoundation.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		G1000001 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +146,7 @@
 				G3000001 /* TestCameraAudioDriver */,
 				G1000004 /* Shared */,
 				G1000005 /* Products */,
+				1B870BF430B4A97200539013 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -219,15 +231,6 @@
 			path = TestCameraAudioDriver;
 			sourceTree = "<group>";
 		};
-		G3000002 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B3000010 /* CoreAudio.framework */,
-				B3000011 /* CoreFoundation.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -246,6 +249,9 @@
 				D1000002 /* PBXTargetDependency */,
 			);
 			name = TestCamera;
+			packageProductDependencies = (
+				P1000002 /* Sparkle */,
+			);
 			productName = TestCamera;
 			productReference = C1000001 /* TestCamera.app */;
 			productType = "com.apple.product-type.application";
@@ -312,6 +318,9 @@
 				Base,
 			);
 			mainGroup = G1000001;
+			packageReferences = (
+				P1000001 /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
 			productRefGroup = G1000005 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -425,6 +434,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = WDCGJTU726;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -481,6 +491,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = WDCGJTU726;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -520,7 +531,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yepher.vidtiming.testcamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -534,7 +545,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TestCamera/TestCamera.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 11;
 				DEAD_CODE_STRIPPING = YES;
@@ -548,9 +560,10 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yepher.vidtiming.testcamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = VideoTestCamera;
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -583,7 +596,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yepher.vidtiming.testcamera.extension;
 				PRODUCT_NAME = com.yepher.vidtiming.testcamera.extension;
 				REGISTER_APP_GROUPS = YES;
@@ -596,9 +609,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = TestCameraExtension/TestCameraExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 11;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = WDCGJTU726;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
@@ -618,9 +633,10 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yepher.vidtiming.testcamera.extension;
 				PRODUCT_NAME = com.yepher.vidtiming.testcamera.extension;
+				PROVISIONING_PROFILE_SPECIFIER = VideoTestCameraExtension;
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -633,12 +649,13 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 11;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = WDCGJTU726;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = TestCameraAudioDriver/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yepher.vidtiming.testcamera.audiodriver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = driver;
@@ -651,12 +668,13 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 11;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = WDCGJTU726;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = TestCameraAudioDriver/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yepher.vidtiming.testcamera.audiodriver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = driver;
@@ -703,6 +721,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		P1000001 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		P1000002 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = P1000001 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E1000001 /* Project object */;
 }

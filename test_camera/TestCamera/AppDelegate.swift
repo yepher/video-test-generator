@@ -7,10 +7,19 @@
 //
 
 import Cocoa
+import Sparkle
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow?
+
+    /// Sparkle updater. Reads SUFeedURL / SUPublicEDKey from Info.plist and
+    /// checks GitHub Releases for new versions in the background.
+    let updaterController = SPUStandardUpdaterController(
+        startingUpdater: true,
+        updaterDelegate: nil,
+        userDriverDelegate: nil
+    )
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         // Set up the menu bar (required for programmatic apps without storyboards)
@@ -32,6 +41,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window?.center()
         window?.makeKeyAndOrderFront(nil)
 
+        // After an app update, re-submit the activation request so macOS
+        // replaces the previously installed camera extension with the new one.
+        viewController.reactivateExtensionIfAppWasUpdated()
+
         // Bring the app to the foreground — required when there's no storyboard
         NSApp.activate(ignoringOtherApps: true)
     }
@@ -44,6 +57,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainMenu.addItem(appMenuItem)
         let appMenu = NSMenu()
         appMenu.addItem(withTitle: "About Test Camera", action: #selector(NSApplication.orderFrontStandardAboutPanel(_:)), keyEquivalent: "")
+        let updateItem = NSMenuItem(title: "Check for Updates…", action: #selector(SPUStandardUpdaterController.checkForUpdates(_:)), keyEquivalent: "")
+        updateItem.target = updaterController
+        appMenu.addItem(updateItem)
         appMenu.addItem(NSMenuItem.separator())
         appMenu.addItem(withTitle: "Quit Test Camera", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         appMenuItem.submenu = appMenu
